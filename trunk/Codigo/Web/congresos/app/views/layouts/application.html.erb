@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Congresos</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='<%= controller.controller_name%>' id="app">
+
+<% if session[:admin_id] %>
+	<div id="box">
+		<div id="content">
+			<%= link_to "Administradores", administradores_path %>
+			<%= button_to "Cerrar Sesión", logout_path, method: :delete, data: 
+			{ confirm: "¿Está seguro que desea cerrar sesión?" } %>
+		</div>
+	</div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

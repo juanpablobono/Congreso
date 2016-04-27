@@ -1,0 +1,78 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error - ") %>No se puede guardar este evento:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion, rows: 3, cols: 30 %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_inicio %><br>
+    <div class="container">
+      <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <%= f.text_field :fecha_inicio, class: "form-control" %> 
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                  locale: 'es',
+                  format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_fin %><br>
+    <div class="container">
+      <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                    <%= f.text_field :fecha_fin, class: "form-control"%> 
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+                  locale: 'es',
+                  format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :lugar %><br>
+    <%= f.text_field :lugar, size: 30 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!-- https://github.com/TrevorS/bootstrap3-datetimepicker-rails -->
+<!-- http://eonasdan.github.io/bootstrap-datetimepicker/ -->

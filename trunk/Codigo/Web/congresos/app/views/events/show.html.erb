@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h4><%= @event.descripcion %></h4>
+Lugar: <%= @event.lugar %><br/>
+Inicio: <div class="datestring"><%= @event.fecha_inicio %></div><br/>
+Fin: <div class="datestring"><%= @event.fecha_fin %></div><br/>
+<%= link_to 'Editar Evento', edit_event_path(event_id: @event) %>
+
+<h3>Cursos</h3>
+<%= link_to 'Nuevo Curso', new_course_path(event_id: @event) %><br/>
+<br/>
+<% if !@courses.empty? %>
+	<table border="1px">
+	  <thead>
+	    <tr>
+	    	<th>Nombre</th>
+	      <th>Descripción</th>
+	      <th>Día y horario</th>
+	      <th>Duración</th>
+	      <th>Activo</th>
+	      <th>Acciones</th>
+	    </tr>
+	  </thead>
+	<% @courses.each do |course| %>
+	  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	    <td width="20%">
+	      <%= course.nombre %>
+	    </td>
+	    <td width="25%">
+	      <%= course.descripcion %>
+	    </td>
+	    <td  width="20%">
+	    	<p><div class="datetimestring"><%= course.dia_hora %></div>hs</p>
+	    </td>
+	    <td width="15%">
+	      <%= course.duracion %> horas
+	    </td>
+	    <td width="10%">
+	      <%= course.activo ? "Sí" : "No" %>
+	    </td>
+	    <td width="10%">
+	      <%= link_to 'Ver', course %><br/>
+	      <%= link_to 'Editar', edit_course_path(course) %><br/>
+	      <%= link_to 'Eliminar', course, method: :delete, 
+	          data: { confirm: '¿Está seguro que desea eliminar este curso?' } %>
+	    </td>
+	  </tr>
+	<% end %>
+	</table>
+<%else%>
+	<p>Aún no hay cursos en este evento.</p>
+<%end%>
+<br/>
+<%= link_to 'Atrás', events_path %>

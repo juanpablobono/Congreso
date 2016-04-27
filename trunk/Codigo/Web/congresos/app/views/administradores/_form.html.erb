@@ -1,0 +1,57 @@
+<%= form_for(@administrador) do |f| %>
+  <% if @administrador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@administrador.errors.count, "error") %> no se puede guardar este administrador:</h2>
+
+      <ul>
+      <% @administrador.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Ingrese los datos de administrador</legend>
+
+    <div class="field">
+      <%= f.label :nombre %><br/>
+      <%= f.text_field :nombre, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :apellido %><br/>
+      <%= f.text_field :apellido, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :usuario %><br/>
+      <%= f.text_field :usuario, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label "Contraseña" %><br/>
+      <%= f.password_field :password, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label "Confirmar contraseña" %><br/>
+      <%= f.password_field :password_confirmation, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :tipo %><br/>
+      <%= f.text_field :tipo, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :telefono %><br/>
+      <%= f.text_field :telefono, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br/>
+      <%= f.text_field :email, size: 35 %>
+    </div>
+    <div class="field">
+      <%= f.label :activo %><br/>
+      <%= f.check_box :activo %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Guardar Administrador" %>
+    </div>
+  </fieldset>
+<% end %>

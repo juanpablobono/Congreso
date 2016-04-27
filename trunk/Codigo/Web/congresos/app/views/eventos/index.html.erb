@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Eventos</h2>
+<%= link_to 'Nuevo Evento', new_evento_path %><br/>
+<br/>
+<% if !@eventos.empty? %>
+  <table border="1px">
+    <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Finalización</th>
+        <th>Lugar</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+  <% @eventos.each do |evento| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td width="40%">
+        <%= evento.descripcion %>
+      </td>
+      <td  width="15%">
+        <div class="datestring">
+          <%= evento.fecha_inicio %>
+        </div>
+      </td>
+      <td width="15%">
+        <div class="datestring">
+          <%= evento.fecha_fin %>
+        </div>
+      </td>
+      <td width="15%">
+        <%= evento.lugar %>
+      </td>
+      <td width="15%">
+        <%= link_to 'Ver', evento %><br/>
+        <%= link_to 'Editar', edit_evento_path(evento) %><br/>
+        <%= link_to 'Eliminar', evento, method: :delete, 
+            data: { confirm: '¿Está seguro que desea eliminar este evento?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+

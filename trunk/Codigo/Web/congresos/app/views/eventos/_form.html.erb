@@ -1,0 +1,64 @@
+<%= form_for(@evento) do |f| %>
+  <% if @evento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evento.errors.count, "error - ") %>No se puede guardar este evento:</h2>
+
+      <ul>
+      <% @evento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :descripcion %><br>
+      <%= f.text_area :descripcion, rows: 4, cols: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_inicio %><br>
+      <div class="container">
+        <div class="row">
+          <div class='col-sm-6'>
+              <div class="form-group">
+                  <div class='input-group date' id='datetimepicker1'>
+                      <%= f.text_field :fecha_inicio, value: @fecha_inicio_str, class: "form-control" %> 
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_fin %><br>
+      <div class="container">
+        <div class="row">
+          <div class='col-sm-6'>
+              <div class="form-group">
+                  <div class='input-group date' id='datetimepicker2'>
+                      <%= f.text_field :fecha_fin, value: @fecha_fin_str, class: "form-control"%> 
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :lugar %><br>
+      <%= f.text_field :lugar, size: 40 %>
+    </div>
+
+  <br/>
+  <div class="actions">
+    <%= f.submit "Guardar Evento" %>
+  </div>
+<% end %>
+
+<!-- https://github.com/TrevorS/bootstrap3-datetimepicker-rails -->
+<!-- http://eonasdan.github.io/bootstrap-datetimepicker/ -->

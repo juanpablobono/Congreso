@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @administrador.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @administrador.apellido %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @administrador.usuario %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @administrador.tipo %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @administrador.telefono %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @administrador.email %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @administrador.activo %>
+</p>
+
+<%= link_to 'Editar Administrador', edit_administrador_path(@administrador) %> |
+<%= link_to 'Atrás', administradores_path %>

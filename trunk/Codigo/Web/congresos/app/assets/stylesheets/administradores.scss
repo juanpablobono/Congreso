@@ -1,0 +1,23 @@
+// Place all the styles related to the Administradores controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.administradores {
+
+	table {
+		margin-right: 8em;
+	}
+
+	th {
+		text-align: left;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+
+	td {
+		text-align: left;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+
+}
